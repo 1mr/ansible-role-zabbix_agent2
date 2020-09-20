@@ -1,7 +1,7 @@
 ---
 - name: install pre-requirements
   apt:
-    name: gpg
+    name: gnupg
     state: present
 
 - name: add zabbix repository key
