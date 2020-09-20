@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  role_name: zabbix-agent2
   author: Stas Stavnichuk
   description: install and configure zabbix-agent2
   license: MIT
