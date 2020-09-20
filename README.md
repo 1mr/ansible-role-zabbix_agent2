@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.com/1mr/ansible-role-zabbix-agent2.svg?branch=master)](https://travis-ci.com/1mr/ansible-role-zabbix-agent2)
 
-Zabbix-agent
+Zabbix-agent2
 ============
 
 This role helps to install and configure zabbix-agent2.
