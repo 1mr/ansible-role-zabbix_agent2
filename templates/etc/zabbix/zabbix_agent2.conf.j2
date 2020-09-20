@@ -1,0 +1,39 @@
+#{{ ansible_managed }}
+# This is a configuration file for Zabbix agent 2 (Unix)
+# To get more information about Zabbix, visit http://www.zabbix.com
+
+PidFile=/var/run/zabbix/zabbix_agent2.pid
+LogFile=/var/log/zabbix/zabbix_agent2.log
+LogFileSize=0
+Server={{ zabbix_agent_server }}
+{% if zabbix_agent_listen_port is defined %}
+ListenPort={{ zabbix_agent_listen_port }}
+{% endif %}
+{% if zabbix_agent_listen_ip is defined %}
+ListenIP={{ zabbix_agent_listen_ip }}
+{% endif %}
+ServerActive={{ zabbix_agent_server }}
+Hostname={{ inventory_hostname }}
+{% if zabbix_agent_psk_secret is defined %}
+TLSConnect=psk
+TLSAccept=psk
+TLSPSKFile=/etc/zabbix/{{ zabbix_agent_psk_file | default('secret.psk') }}
+TLSPSKIdentity={{ zabbix_agent_psk_identity | default( inventory_hostname ) }}
+{% endif %}
+{% if zabbix_agent_metadata is defined and zabbix_agent_metadata != [] %}
+HostMetadata={{ zabbix_agent_metadata }}
+{% endif %}
+Include=/etc/zabbix/zabbix_agent2.d/
+ControlSocket=/tmp/agent.sock
+{% if zabbix_agent_plugins is defined %}
+
+####### PLUGIN-SPECIFIC PARAMETERS #######
+
+{% for plugin in zabbix_agent_plugins %}
+{% if plugin.name is defined and plugin.parameters is defined %}
+{% for key, value in plugin.parameters.items() %}
+Plugins.{{ plugin.name }}.{{ key }}={{ value }}
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% endif %}

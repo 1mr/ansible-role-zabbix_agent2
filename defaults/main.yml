@@ -1,0 +1,7 @@
+---
+zabbix_agent_version: 5.0  # zabbix release
+zabbix_agent_server: ""
+zabbix_agent_mysql_user: zbx_monitor
+zabbix_agent_mysql_passwd: zbx_pass
+zabbix_agent_metadata: []
+# zabbix_agent_psk_secret: password #psk secret

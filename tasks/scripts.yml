@@ -1,0 +1,16 @@
+---
+- name: get package facts
+  package_facts:
+    manager: auto
+    strategy: first
+
+- name: create zabbix scripts directory
+  file:
+    path: /etc/zabbix/scripts
+    state: directory
+    mode: 0755
+
+- import_tasks: nginx.yml
+  when: "'nginx' in ansible_facts.packages"
+  tags:
+    - nginx_zabbix-agent2

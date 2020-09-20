@@ -1,0 +1,23 @@
+---
+- name: nginx | install dependencies
+  apt:
+    name: ['logtail']
+    state: present
+
+- name: nginx | copy check script
+  copy:
+    src: etc/zabbix/scripts/nginx_logs_full.py
+    dest: /etc/zabbix/scripts/nginx_logs_full.py
+    owner: zabbix
+    group: zabbix
+    mode: 0755
+  notify:
+    - restart zabbix-agent2
+
+- name: nginx | copy userparameter
+  copy:
+    src: etc/zabbix/zabbix-agent2.d/nginx.conf
+    dest: /etc/zabbix/zabbix_agent2.d/nginx.conf
+    owner: root
+    group: root
+    mode: 0644

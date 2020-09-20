@@ -1,0 +1,15 @@
+---
+galaxy_info:
+  author: Stas Stavnichuk
+  description: install and configure zabbix-agent2
+  license: MIT
+  min_ansible_version: 2.5
+  platforms:
+  - name: Debian
+    versions:
+    - buster
+    - jessie
+  galaxy_tags:
+    - zabbix
+    - debian
+    - monitoring

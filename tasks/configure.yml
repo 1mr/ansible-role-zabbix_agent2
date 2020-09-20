@@ -1,0 +1,16 @@
+---
+- name: create psk secret file
+  copy:
+    dest: /etc/zabbix/{{ zabbix_agent_psk_file | default('secret.psk') }}
+    content: "{{ zabbix_agent_psk_secret }}"
+    owner: zabbix
+    mode: 0640
+  when: zabbix_agent_psk_secret is defined
+
+- name: copy config file
+  template:
+    src: etc/zabbix/zabbix_agent2.conf.j2
+    dest: /etc/zabbix/zabbix_agent2.conf
+    mode: 0644
+  notify:
+    - restart zabbix-agent2

@@ -1,0 +1,31 @@
+---
+- name: install pre-requirements
+  apt:
+    name: gpg
+    state: present
+
+- name: add zabbix repository key
+  apt_key: >
+    url=http://repo.zabbix.com/zabbix-official-repo.key
+
+- name: add zabbix repository
+  apt_repository: >
+    repo={{ item }}
+    filename=zabbix
+  with_items:
+    - 'deb http://repo.zabbix.com/zabbix/{{ zabbix_agent_version }}/debian {{ ansible_distribution_release }} main'
+    - 'deb-src http://repo.zabbix.com/zabbix/{{ zabbix_agent_version }}/debian {{ ansible_distribution_release }} main'
+
+- name: install zabbix-agent2
+  apt:
+    name: ['zabbix-agent2', 'zabbix-get', 'zabbix-sender']
+    update_cache: yes
+  environment:
+    DEBIAN_FRONTEND: noninteractive
+  notify:
+    - restart zabbix-agent2
+
+- name: enable service zabbix-agent2 and ensure it is not masked
+  systemd:
+    name: zabbix-agent2
+    enabled: yes

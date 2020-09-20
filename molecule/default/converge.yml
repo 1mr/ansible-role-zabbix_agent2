@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: include 1mr.zabbix-agent2
+      include_role:
+        name: "1mr.zabbix-agent2"

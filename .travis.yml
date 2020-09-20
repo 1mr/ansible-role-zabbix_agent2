@@ -1,0 +1,26 @@
+---
+language: python
+
+services: docker
+sudo: false
+
+env:
+  global:
+    - ROLE_NAME: zabbix-agent2
+  matrix:
+    - MOLECULE_DISTRO: buster
+    - MOLECULE_DISTRO: stretch
+
+install:
+  - pip install yamllint ansible-lint flake8 molecule docker
+  
+before_script:
+  - cd ../
+  - mv ansible-role-$ROLE_NAME 1mr.$ROLE_NAME
+  - cd 1mr.$ROLE_NAME
+
+script:
+  - molecule test
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/
