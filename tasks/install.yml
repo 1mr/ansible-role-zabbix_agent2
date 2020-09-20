@@ -1,9 +1,4 @@
 ---
-- name: install pre-requirements
-  apt:
-    name: gnupg
-    state: present
-
 - name: add zabbix repository key
   apt_key: >
     url=http://repo.zabbix.com/zabbix-official-repo.key

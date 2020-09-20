@@ -2,6 +2,11 @@
 - name: Converge
   hosts: all
   tasks:
+    - name: install requirements
+      apt:
+        name: gnupg
+        state: present
+        update_cache: yes
     - name: include 1mr.zabbix-agent2
       include_role:
         name: "1mr.zabbix-agent2"
