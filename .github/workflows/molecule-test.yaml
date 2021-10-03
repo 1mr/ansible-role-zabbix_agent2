@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install --upgrade pip
-          pip install yamllint ansible-lint flake8 molecule[docker] docker
+          pip install ansible yamllint ansible-lint flake8 molecule[docker]
       - name: Test with molecule
         run: |
           molecule --debug test
