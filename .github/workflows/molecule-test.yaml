@@ -3,28 +3,16 @@ name: Molecule Test
 on: [push]
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@v2
-        with:
-          path: "${{ github.repository }}"
-      - name: molecule
-        uses: robertdebock/molecule-action@2.6.17
-        with:
-          command: lint
   test:
-    needs:
-      - lint
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        image:
-          - 1am3r/debian:molecule-buster
-          - 1am3r/debian:molecule-bullseye
+        distro:
+          - buster
+          - bullseye
     env:
       ANSIBLE_CALLBACK_WHITELIST: profile_tasks
+    container: 1am3r/debian:molecule-${{ matrix.distro }}
     steps:
       - name: checkout
         uses: actions/checkout@v2
