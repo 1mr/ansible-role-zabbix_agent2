@@ -4,12 +4,14 @@ on: [push]
 
 jobs:
   test:
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         distro:
           - buster
           - bullseye
-    runs-on: 1am3r/debian:molecule-${{ matrix.distro }}
+    container:
+      image: 1am3r/debian:molecule-${{ matrix.distro }}
     env:
       ANSIBLE_CALLBACK_WHITELIST: profile_tasks
     steps:
