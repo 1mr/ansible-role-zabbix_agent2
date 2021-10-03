@@ -25,7 +25,7 @@ jobs:
           pip install yamllint ansible-lint flake8 molecule[docker] docker
       - name: Test with molecule
         run: |
-          molecule test
+          molecule --debug test
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
