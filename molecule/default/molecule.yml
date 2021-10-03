@@ -15,10 +15,7 @@ lint: |
 platforms:
   - name: instance
     image: "1am3r/debian:molecule-${MOLECULE_DISTRO:-bullseye}"
-    command: /sbin/init
-    tmpfs:
-      - /run
-      - /tmp
+    command: ""
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
