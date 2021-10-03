@@ -7,10 +7,10 @@ galaxy_info:
   license: MIT
   min_ansible_version: 2.5
   platforms:
-  - name: Debian
-    versions:
-    - buster
-    - bullseye
+    - name: Debian
+      versions:
+        - buster
+        - bullseye
   galaxy_tags:
     - zabbix
     - debian
