@@ -14,7 +14,7 @@ ListenIP={{ zabbix_agent_listen_ip }}
 {% endif %}
 ServerActive={{ zabbix_agent_server }}
 Hostname={{ inventory_hostname }}
-{% if zabbix_agent_psk_secret is defined %}
+{% if zabbix_agent_psk_secret is defined and zabbix_agent_psk_secret != '' %}
 TLSConnect=psk
 TLSAccept=psk
 TLSPSKFile=/etc/zabbix/{{ zabbix_agent_psk_file | default('secret.psk') }}

@@ -9,11 +9,11 @@ env:
     - ROLE_NAME: zabbix-agent2
   matrix:
     - MOLECULE_DISTRO: buster
-    - MOLECULE_DISTRO: stretch
+    - MOLECULE_DISTRO: bullseye
 
 install:
-  - pip install yamllint ansible-lint flake8 molecule docker
-  
+  - pip install yamllint ansible-lint flake8 'molecule[docker]' docker
+
 before_script:
   - cd ../
   - mv ansible-role-$ROLE_NAME 1mr.$ROLE_NAME

@@ -1,6 +1,7 @@
 ---
 galaxy_info:
-  role_name: zabbix-agent2
+  role_name: zabbix_agent2
+  namespace: 1mr
   author: Stas Stavnichuk
   description: install and configure zabbix-agent2
   license: MIT
@@ -9,7 +10,7 @@ galaxy_info:
   - name: Debian
     versions:
     - buster
-    - jessie
+    - bullseye
   galaxy_tags:
     - zabbix
     - debian

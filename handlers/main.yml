@@ -1,4 +1,5 @@
 ---
+# handlers file for 1mr.zabbix_agent2
 - name: restart zabbix-agent2
   systemd:
     name: zabbix-agent2

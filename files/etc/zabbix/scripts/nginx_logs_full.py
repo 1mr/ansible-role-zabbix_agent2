@@ -47,7 +47,7 @@ def main():
                 log = s.Popen(cmd.split(), stdout=wc.stdin)
                 output = wc.communicate()[0]
                 log.wait()
-                out += "- nginx[%s,%s] %s" % (vhost, suf[:-11], output)
+                out += "- nginx[%s,%s] %s\n" % (vhost, suf[:-11], int(output))
 
         # write data for zabbix sender
         try:

@@ -1,16 +1,20 @@
 ---
 dependency:
   name: galaxy
+provisioner:
+  name: ansible
+verifier:
+  name: ansible
 driver:
   name: docker
 lint: |
   set -e
   yamllint .
   ansible-lint
-  flake8 
+  flake8
 platforms:
   - name: instance
-    image: "1am3r/debian:molecule-${MOLECULE_DISTRO:-buster}"
+    image: "1am3r/debian:molecule-${MOLECULE_DISTRO:-bullseye}"
     command: /sbin/init
     tmpfs:
       - /run

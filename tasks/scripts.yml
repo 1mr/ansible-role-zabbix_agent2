@@ -13,4 +13,4 @@
 - import_tasks: nginx.yml
   when: "'nginx' in ansible_facts.packages"
   tags:
-    - nginx_zabbix-agent2
+    - nginx_zabbix_agent2

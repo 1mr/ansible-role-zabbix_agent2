@@ -7,6 +7,6 @@
         name: gnupg
         state: present
         update_cache: yes
-    - name: include 1mr.zabbix-agent2
+    - name: "Include 1mr.zabbix_agent2"
       include_role:
-        name: "1mr.zabbix-agent2"
+        name: "1mr.zabbix_agent2"

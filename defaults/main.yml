@@ -1,5 +1,6 @@
 ---
-zabbix_agent_version: 5.0  # zabbix release
+# defaults file for 1mr.zabbix_agent2
+zabbix_agent_version: 5.4  # zabbix release
 zabbix_agent_server: ""
 zabbix_agent_mysql_user: zbx_monitor
 zabbix_agent_mysql_passwd: zbx_pass
