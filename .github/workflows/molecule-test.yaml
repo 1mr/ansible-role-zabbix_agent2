@@ -20,10 +20,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        namespace: 1am3r
         image:
-          - debian:molecule-buster
-          - debian:molecule-bullseye
+          - 1am3r/debian:molecule-buster
+          - 1am3r/debian:molecule-bullseye
     steps:
       - name: checkout
         uses: actions/checkout@v2
